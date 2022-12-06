@@ -1,2 +1,12 @@
-@import './common';
-@import './example';
+@import './base/common';
+
+@import './layout/header';
+@import './layout/hero.scss';
+@import './layout/container';
+@import './layout/error.scss';
+@import './layout/modal-window.scss';
+@import './layout/footer.scss';
+
+@import './utils/mixins';
+@import './utils/variables';
+@import './utils/placeholders.scss';
