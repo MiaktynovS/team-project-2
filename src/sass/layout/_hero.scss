@@ -1,30 +1,10 @@
-.hero {
-    //background-color: aqua;
-}
+// .hero {
+//     background-color: aqua;
+// }
 .box-title-img {
     display: flex;
 }
-.title {
-    width: 684px;
-    margin-top: 100px;
-    margin-right: 66px;
-    font-weight: 600;
-    font-size: 52px;
-    line-height: 80px;
-    color: #FD5103;
-}
-.box-search-cocktails {
-    margin-top: -340px;
-}
-.favorite-cocktail {
-    margin-top: 36px;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: 0.02em;
-    color: #202025;
-    opacity: 0.8;
-}
+
 .hero-img {
     width: 500px;
     margin-top: 37px;
@@ -36,18 +16,213 @@
     width: 520px;
     margin-top: 40px;
 }
-.list-cocktail__btn {
-    width: 40px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 36px;
-    color: #5F6775;
-    border: none;
-    background: transparent;
-    outline: none;
+
+// =========================== от 320px до 767px ============================== 
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+/* Вызывающая кнопка */
+    .btn {
+        font-weight: 700;
+        margin-top: 48px;
+        width: 93px;
+        height: 34px;
+        color: #fd5103;
+        border: 1px solid #fd5103;
+        border-radius: 4px;
+        padding: 16px;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: none;
+    }
+
+    .box-search-cocktails {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .dropdown {
+        position: absolute;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 15px;
+        border: 1px solid #FD5103;
+        border-radius: 4px;
+        min-width: 93px;
+        max-height: 84px;
+        z-index: 1;
+        display: none;
+        position: absolute;
+        // max-height: calc(100vh - 500px);
+        overflow-y: auto;
+    }
+
+    .dropdown-content a {
+        color: #5F6775;
+        padding: 6px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover, .dropdown-content a:focus {
+        color: #FD5103;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .btn:hover,
+    .dropdown:hover .btn {
+        background-color: #FD5103;
+        color: #ffffff;
+    }
+
+    // =======================================================
+
+
+    .hero-img {
+        width: 300px;
+    }
+    .title {
+        width: 300px;
+        color: #fd5103;
+        margin-top: 60px;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 42px;
+    }
+    .box-title-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .favorite-cocktail {
+        opacity: 0.8;
+        color: #000000;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 28px;
+    }
+    .list-cocktail__btn {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
 }
-.list-cocktail__btn:hover, .list-cocktail__btn:focus {
-    color: #FD5103; 
-    //border: 1px solid #5F6775;
-    text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
+
+
+// =========================== от 480px ==============================
+
+@media screen and (min-width: 480px) {}
+
+// =========================== от 768px ==============================
+
+@media screen and (min-width: 768px) {
+    .dropdown {
+        display: none;
+    }
+    .hero-img {
+        width: 336px;
+        margin-top: 70px;
+    }
+    .title {
+        width: 336px;
+        color: #fd5103;
+        margin-top: 132px;
+        margin-right: 16px;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 42px;
+    }
+    .favorite-cocktail {
+        margin-top: 28px;
+        text-align: start;
+        letter-spacing: .02em;
+        color: #202025;
+        opacity: .8;
+        margin-top: 40px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 28px;
+    }
+   .list-cocktail {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       width: 324px;
+       margin-top: 40px;
+   }
+        .list-cocktail__item .list-cocktail__btn {
+        display: block;
+        width: 24px;
+        color: #5f6775;
+        background: none;
+        border: none;
+        outline: none;
+        font-weight: 700;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+    }
+    .list-cocktail__btn:hover,
+    .list-cocktail__btn:focus {
+        color: #FD5103;
+        //border: 1px solid #5F6775;
+        text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
+    }
+    .box-search-cocktails {
+        margin-top: -330px;
+    }
+}
+
+// =========================== от 1280px ==============================
+
+@media screen and (min-width: 1280px) {
+    .title {
+        width: 684px;
+        margin-top: 100px;
+        margin-right: 66px;
+        font-size: 52px;    
+        line-height: 80px;
+        font-size: 52px;
+    }
+    .favorite-cocktail {
+        margin-top: 36px;
+        font-size: 18px;
+    }
+    
+    .list-cocktail__btn {
+        width: 40px;
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .list-cocktail {
+        width: 520px;
+    }
+    .box-search-cocktails {
+        margin-top: -220px;
+    }
+    .list-cocktail__item .list-cocktail__btn {
+        display: block;
+        width: 40px;
+        font-size: 24px;
+        line-height: 36px;
+    }
+    
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .dropdown {
+        display: block;
+    }
 }
