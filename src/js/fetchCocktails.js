@@ -1,12 +1,10 @@
 const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
 
-export function fetchCocktails(query) {
+export async function fetchCocktails(query) {
 
- return fetch(`${BASE_URL}s=${query}`).then(response => {
-  return response.json();
-}).then(data => {
+ const response = await fetch(`${BASE_URL}s=${query}`);
+  const data = await response.json();
   console.log(data);
   return data;
-});
 }
 
