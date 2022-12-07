@@ -5,7 +5,7 @@ const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.btn-load-more'),
-}
+};
 
 // let query = '';
 // let page = 1;
@@ -18,13 +18,15 @@ refs.searchForm.addEventListener('submit', onSearchForm);
 function onSearchForm(event) {
   event.preventDefault();
   page = 1;
-  query = event.currentTarget.searchQuery.value.trim();
+  const query = event.currentTarget.searchQuery.value.trim();
   refs.gallery.innerHTML = '';
 
 
   fetchCocktails(query).then(data => {
     console.log(data.drinks);
-    createCocktail(data.drinks)
+    createCocktail(data.drinks);
 
-  })
+  });
 }
+
+console.log(onSearchForm);

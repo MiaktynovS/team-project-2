@@ -8,7 +8,20 @@ export function createCocktail(images) {
           <div class="gallery-item">
             <img class="gallery-item__img" src="${strDrinkThumb}" alt="${strImageAttribution}" loading="lazy" />
             <div class="info">
-              <p class="info-item">${strDrink}</p>
+              <div class="info-item">
+                <p class="info-descr">${strDrink}</p>
+              </div>
+              <div class="btn-item">
+                <div class="info-btn">
+                  <p class="info-btn-descr js-learn-btn">Learn more</p>
+                </div>
+                <div class="add-favorite">
+                  <p class="add-descr">Add To</p>
+                  <svg class="add-favorite__icon" width="20" height="20">
+                    <use href="images/sprite.svg#heart"></use>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </a>
@@ -16,5 +29,4 @@ export function createCocktail(images) {
     })
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
-
 }
