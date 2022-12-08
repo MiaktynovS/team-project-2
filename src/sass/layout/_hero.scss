@@ -132,14 +132,13 @@
         display: none;
     }
     .hero-img {
-        width: 336px;
-        margin-top: 70px;
+        width: 368px;
+        margin-top: 90px;
     }
     .title {
         width: 336px;
         color: #fd5103;
         margin-top: 132px;
-        margin-right: 16px;
         font-weight: 600;
         font-size: 26px;
         line-height: 42px;
@@ -181,7 +180,7 @@
         text-shadow: 0px 4px 4px rgba(95, 103, 117, 0.25);
     }
     .box-search-cocktails {
-        margin-top: -330px;
+        margin-top: -200px;
     }
 }
 
@@ -217,6 +216,10 @@
         width: 40px;
         font-size: 24px;
         line-height: 36px;
+    }
+    .hero-img {
+        width: 550px;
+        margin-top: 70px;
     }
     
 }
