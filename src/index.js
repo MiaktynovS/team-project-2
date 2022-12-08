@@ -1,32 +1,60 @@
-import { fetchCocktails } from './js/fetchCocktails';
-import { createCocktail } from './js/createCocktail';
+import {
+  fetchCocktails,
+  fetchLetterCocktails,
+  fetchRandomCocktails,
+} from './js/fetchCocktails';
+import {
+  createCocktail,
+  createMarkup,
+  createMarkupDesktop,
+} from './js/createCocktail';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.btn-load-more'),
+  searchLetterCocktailMobile: document.querySelector('.js-letter-cocktail-1'),
+  searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
 };
-
-// let query = '';
-// let page = 1;
-// let simpleLightBox;
-// const perPage = 40;
-
+// ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)============================
+createMarkup();
+// ====================ФУНКЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ DEKSTOP, TABLET==============================================
+createMarkupDesktop();
+// ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ====================================================================
+fetchRandomCocktails().then(data => {
+  console.log(data.drinks);
+  createCocktail(data.drinks);
+});
+fetchRandomCocktails();
+// =======================LISTENER =================================================================================
 refs.searchForm.addEventListener('submit', onSearchForm);
-// refs.loadMoreBtn.addEventListener('click', onLoadBtn);
+refs.searchLetterCocktailMobile.addEventListener(
+  'click',
+  onClickLetterCocktail
+);
+refs.searchLetterCocktail.addEventListener('click', onClickLetterCocktail);
 
 function onSearchForm(event) {
   event.preventDefault();
+  refs.gallery.innerHTML = '';
   page = 1;
   const query = event.currentTarget.searchQuery.value.trim();
-  refs.gallery.innerHTML = '';
-
 
   fetchCocktails(query).then(data => {
     console.log(data.drinks);
     createCocktail(data.drinks);
-
   });
 }
 
-console.log(onSearchForm);
+function onClickLetterCocktail(event) {
+  refs.gallery.innerHTML = '';
+  page = 1;
+  const letter = event.target.textContent;
+
+  console.log(letter);
+
+  fetchLetterCocktails(letter).then(data => {
+    console.log(data.drinks);
+    createCocktail(data.drinks);
+  });
+}

@@ -1,7 +1,10 @@
 const gallery = document.querySelector('.gallery');
+const markupMobile = document.querySelector('.dropdown-content');
+const markupDesktop = document.querySelector('.list-cocktail');
 
 export function createCocktail(images) {
-  const markup = images.map(image => {
+  const markup = images
+    .map(image => {
       const { strDrinkThumb, strImageAttribution, strDrink } = image;
       return `
         <a class="gallery__link" href="${strDrinkThumb}">
@@ -29,4 +32,32 @@ export function createCocktail(images) {
     })
     .join('');
   gallery.insertAdjacentHTML('beforeend', markup);
+}
+
+// ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)=======================
+export function createMarkup() {
+  let str = 'ABCDEFGHIJKLMN0PQRSTUVWXYZ1234567890';
+  const result = str
+    .split('')
+    .map(letter => {
+      return `
+      <span href="#">${letter}</span>`;
+    })
+    .join('');
+  markupMobile.insertAdjacentHTML('beforeend', result);
+}
+
+// ====================ФУНКЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ DEKSTOP, TABLET==============================================
+export function createMarkupDesktop() {
+  let str = 'ABCDEFGHIJKLMN0PQRSTUVWXYZ1234567890';
+  const result = str
+    .split('')
+    .map(letter => {
+      return `
+      <li class="list-cocktail__item" href="#">
+        <button class="list-cocktail__btn">${letter}</button>
+      </li>`;
+    })
+    .join('');
+  markupDesktop.insertAdjacentHTML('beforeend', result);
 }

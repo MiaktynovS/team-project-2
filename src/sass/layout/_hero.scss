@@ -64,14 +64,14 @@
         overflow-y: auto;
     }
 
-    .dropdown-content a {
+    .dropdown-content span {
         color: #5F6775;
         padding: 6px 16px;
         text-decoration: none;
         display: block;
     }
 
-    .dropdown-content a:hover, .dropdown-content a:focus {
+    .dropdown-content span:hover, .dropdown-content span:focus {
         color: #FD5103;
     }
 
