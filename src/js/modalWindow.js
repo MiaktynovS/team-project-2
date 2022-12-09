@@ -1,15 +1,12 @@
-() => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-  };
+export function openModalWindow(e) {
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
-
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
-    console.log(toggleModal());
+  if (e.target.classList.contains('js-learn-btn')) {
+    document.querySelector('[data-modal]').classList.toggle('is-hidden');
+    let closeModal = document.querySelector('[data-modal-close]');
+    closeModal.addEventListener('click', (e) => {
+      document.querySelector('[data-modal]').classList.add('is-hidden');
+      console.log(e.target);
+    });
   }
+
 }
