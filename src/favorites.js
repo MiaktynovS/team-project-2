@@ -1,9 +1,6 @@
-import { saveToLS, loadFromLS } from './js/localSt.js';
-import {
-  fetchCocktails,
-  fetchRandomCocktails,
-  fetchIdCocktails,
-} from './js/fetchCocktails';
+const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
+import { loadFromLS } from './js/localSt.js';
+
 import { createCocktail } from './js/createCocktail';
 
 const refs = {
@@ -16,61 +13,24 @@ const refs = {
   btnLS: document.querySelector('.add-descr'),
 };
 
-// ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ=============================================
-fetchRandomCocktails().then(data => {
-  console.log(data.drinks);
-  appendCocktailsMarkup(data.drinks);
-});
-fetchRandomCocktails();
 // =======================LISTENER =========================================================
 refs.searchForm.addEventListener('submit', onSearchForm);
-refs.favoritCocktails.addEventListener('click', onClickIdCocktail);
 // ======================================================================================
 function onSearchForm(event) {
   event.preventDefault();
-  refs.gallery.innerHTML = '';
-  page = 1;
-  const query = event.currentTarget.searchQuery.value.trim();
+}
 
-  fetchCocktails(query).then(data => {
-    console.log(data.drinks);
-    appendCocktailsMarkup(data.drinks);
+function loadLSCocktails() {
+  const arr = loadFromLS('FavoriteCocktails');
+  const fetches = arr.map(cocktailName => {
+    return fetch(`${BASE_URL}s=${cocktailName}`).then(res => res.json());
+  });
+  Promise.all(fetches).then(arr => {
+    arr = arr.map(obj => {
+      return obj.drinks[0];
+    });
+    console.log(arr);
+    createCocktail(arr);
   });
 }
-function appendCocktailsMarkup(images) {
-  console.log(images);
-  refs.gallery.insertAdjacentHTML('beforeend', createCocktail(images));
-}
-
-// function onClickIdCocktail(event) {
-//   //refs.gallery.innerHTML = '';
-//   //page = 1;
-//   const id = event.target.textContent;
-
-//   fetchIdCocktails(id).then(data => {
-//     console.log(data.drinks.idDrink);
-//     appendCocktailsMarkupFavorit(data.drinks.idDrink);
-//   });
-// }
-
-// function appendCocktailsMarkupFavorit(images) {
-//   console.log(images);
-//   refs.favoritCocktails.insertAdjacentHTML('beforeend', createCocktail(images));
-// }
-// ==================================================
-
-function loadFavoritCocktailLS(event) {
-  refs.gallery.innerHTML = '';
-  page = 1;
-  const ingridient = event.target.textContent;
-
-  console.log(ingridient);
-
-  fetchLetterCocktails(ingridient).then(data => {
-    console.log(data.drinks);
-    saveFavoritCocktailLS();
-    loadFromLS(setIngridLS);
-    createCocktail(data.drinks);
-  });
-}
-loadFavoritCocktailL();
+loadLSCocktails();
