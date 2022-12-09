@@ -1,3 +1,4 @@
+// favorit-cocktails
 import {
   fetchCocktails,
   fetchRandomCocktails,

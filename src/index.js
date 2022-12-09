@@ -2,7 +2,6 @@ import {
   fetchCocktails,
   fetchLetterCocktails,
   fetchRandomCocktails,
-  fetchIdCocktails,
 } from './js/fetchCocktails';
 import {
   createCocktail,
@@ -10,13 +9,14 @@ import {
   createMarkupDesktop,
 } from './js/createCocktail';
 
+import { openModalWindow } from './js/modalWindow';
+
 const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.btn-load-more'),
   searchLetterCocktailMobile: document.querySelector('.js-letter-cocktail-1'),
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
-  favoritCocktails: document.querySelector('.favorit'),
 };
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)============================
 createMarkup();
@@ -25,7 +25,7 @@ createMarkupDesktop();
 // ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ====================================================================
 fetchRandomCocktails().then(data => {
   console.log(data.drinks);
-  appendCocktailsMarkup(data.drinks);
+  createCocktail(data.drinks);
 });
 fetchRandomCocktails();
 // =======================LISTENER =================================================================================
@@ -35,8 +35,7 @@ refs.searchLetterCocktailMobile.addEventListener(
   onClickLetterCocktail
 );
 refs.searchLetterCocktail.addEventListener('click', onClickLetterCocktail);
-// refs.favoritCocktails.addEventListener('click', onClickIdCocktail);
-// ======================================================================================
+
 function onSearchForm(event) {
   event.preventDefault();
   refs.gallery.innerHTML = '';
@@ -45,7 +44,7 @@ function onSearchForm(event) {
 
   fetchCocktails(query).then(data => {
     console.log(data.drinks);
-    appendCocktailsMarkup(data.drinks);
+    createCocktail(data.drinks);
   });
 }
 
@@ -58,29 +57,6 @@ function onClickLetterCocktail(event) {
 
   fetchLetterCocktails(letter).then(data => {
     console.log(data.drinks);
-    appendCocktailsMarkup(data.drinks);
+    createCocktail(data.drinks);
   });
 }
-
-// function onClickIdCocktail(event) {
-//   //refs.gallery.innerHTML = '';
-//   page = 1;
-//   const Id = event.target.textContent;
-
-//   console.log(Id);
-
-//   fetchIdCocktails(Id).then(data => {
-//     console.log(data.drinks.idDrink);
-//     appendCocktailsMarkupFavorit(data.drinks.idDrink);
-//   });
-// }
-
-function appendCocktailsMarkup(images) {
-  console.log(images);
-  refs.gallery.insertAdjacentHTML('beforeend', createCocktail(images));
-}
-
-// function appendCocktailsMarkupFavorit(images) {
-//   console.log(images);
-//   refs.favoritCocktails.insertAdjacentHTML('beforeend', createCocktail(images));
-// }
