@@ -14,13 +14,13 @@ const refs = {
   favoritCocktails: document.querySelector('.favorit'),
 };
 
-// ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ====================================================================
+// ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ=============================================
 fetchRandomCocktails().then(data => {
   console.log(data.drinks);
   appendCocktailsMarkup(data.drinks);
 });
 fetchRandomCocktails();
-// =======================LISTENER =================================================================================
+// =======================LISTENER =========================================================
 refs.searchForm.addEventListener('submit', onSearchForm);
 refs.favoritCocktails.addEventListener('click', onClickIdCocktail);
 // ======================================================================================
