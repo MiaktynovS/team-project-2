@@ -1,4 +1,4 @@
-// favorit-cocktails
+import { saveToLS, loadFromLS } from './js/localSt.js';
 import {
   fetchCocktails,
   fetchRandomCocktails,
@@ -13,6 +13,7 @@ const refs = {
   searchLetterCocktailMobile: document.querySelector('.js-letter-cocktail-1'),
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
   favoritCocktails: document.querySelector('.favorit'),
+  btnLS: document.querySelector('.add-descr'),
 };
 
 // ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ=============================================
@@ -36,25 +37,40 @@ function onSearchForm(event) {
     appendCocktailsMarkup(data.drinks);
   });
 }
-
-function onClickIdCocktail(event) {
-  //refs.gallery.innerHTML = '';
-  //page = 1;
-  const id = event.target.textContent;
-
-  fetchIdCocktails(id).then(data => {
-    console.log(data.drinks.idDrink);
-    appendCocktailsMarkupFavorit(data.drinks.idDrink);
-  });
-}
-
 function appendCocktailsMarkup(images) {
   console.log(images);
   refs.gallery.insertAdjacentHTML('beforeend', createCocktail(images));
 }
 
-function appendCocktailsMarkupFavorit(images) {
-  console.log(123);
-  console.log(images);
-  refs.favoritCocktails.insertAdjacentHTML('beforeend', createCocktail(images));
+// function onClickIdCocktail(event) {
+//   //refs.gallery.innerHTML = '';
+//   //page = 1;
+//   const id = event.target.textContent;
+
+//   fetchIdCocktails(id).then(data => {
+//     console.log(data.drinks.idDrink);
+//     appendCocktailsMarkupFavorit(data.drinks.idDrink);
+//   });
+// }
+
+// function appendCocktailsMarkupFavorit(images) {
+//   console.log(images);
+//   refs.favoritCocktails.insertAdjacentHTML('beforeend', createCocktail(images));
+// }
+// ==================================================
+
+function loadFavoritCocktailLS(event) {
+  refs.gallery.innerHTML = '';
+  page = 1;
+  const ingridient = event.target.textContent;
+
+  console.log(ingridient);
+
+  fetchLetterCocktails(ingridient).then(data => {
+    console.log(data.drinks);
+    saveFavoritCocktailLS();
+    loadFromLS(setIngridLS);
+    createCocktail(data.drinks);
+  });
 }
+loadFavoritCocktailL();

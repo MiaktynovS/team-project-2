@@ -1,3 +1,4 @@
+import { saveToLS, loadFromLS } from './js/localSt.js';
 import {
   fetchCocktails,
   fetchLetterCocktails,
@@ -17,6 +18,7 @@ const refs = {
   loadMoreBtn: document.querySelector('.btn-load-more'),
   searchLetterCocktailMobile: document.querySelector('.js-letter-cocktail-1'),
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
+  btnLS: document.querySelector('.add-descr'),
 };
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)============================
 createMarkup();
@@ -35,6 +37,7 @@ refs.searchLetterCocktailMobile.addEventListener(
   onClickLetterCocktail
 );
 refs.searchLetterCocktail.addEventListener('click', onClickLetterCocktail);
+// refs.btnLS.addEventListener('click', saveFavoritCocktailLS);
 
 function onSearchForm(event) {
   event.preventDefault();
@@ -59,4 +62,14 @@ function onClickLetterCocktail(event) {
     console.log(data.drinks);
     createCocktail(data.drinks);
   });
+}
+
+// =====================================================
+
+export function saveFavoritCocktailLS(event) {
+  // FavoriteCocktails - Улюблені коктейлі
+  // FavoriteIngridients - Улюблені Інгрідієнти
+  let arr;
+  const cocktailName = event.target.getAttribute('data-cocktail-name');
+  saveToLS('FavoriteCocktails', cocktailName);
 }
