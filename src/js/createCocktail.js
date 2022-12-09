@@ -1,3 +1,4 @@
+import { saveFavoritCocktailLS } from '../index.js';
 const gallery = document.querySelector('.gallery');
 const markupMobile = document.querySelector('.dropdown-content');
 const markupDesktop = document.querySelector('.list-cocktail');
@@ -19,7 +20,7 @@ export function createCocktail(images) {
                   <button type="button" class="info-btn-descr js-learn-btn" data-modal-open>Learn more</button>
                 </div>
                 <div class="add-favorite">
-                  <button type="button" class="add-descr">Add To</button>
+                  <button type="button" class="add-descr" data-cocktail-name="${strDrink}">Add To</button>
                   <svg class="add-favorite__icon" width="20" height="20">
                     <use href="./images/heart.svg#heart"></use>
                   </svg>
@@ -31,6 +32,9 @@ export function createCocktail(images) {
       `;
     })
     .join('');
+  document
+    .querySelector('.gallery')
+    .addEventListener('click', saveFavoritCocktailLS);
   gallery.insertAdjacentHTML('beforeend', markup);
 }
 
