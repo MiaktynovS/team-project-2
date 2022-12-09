@@ -1,3 +1,4 @@
+const gallery = document.querySelector('.gallery');
 const markupMobile = document.querySelector('.dropdown-content');
 const markupDesktop = document.querySelector('.list-cocktail');
 
@@ -30,7 +31,7 @@ export function createCocktail(images) {
       `;
     })
     .join('');
-  return markup;
+  gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)=======================
