@@ -1,3 +1,4 @@
+const gallery = document.querySelector('.gallery');
 const markupMobile = document.querySelector('.dropdown-content');
 const markupDesktop = document.querySelector('.list-cocktail');
 
@@ -6,7 +7,7 @@ export function createCocktail(images) {
     .map(image => {
       const { strDrinkThumb, strImageAttribution, strDrink } = image;
       return `
-        <a class="gallery__link" href="${strDrinkThumb}">
+        <a class="gallery__link">
           <div class="gallery-item">
             <img class="gallery-item__img" src="${strDrinkThumb}" alt="${strImageAttribution}" loading="lazy" />
             <div class="info">
@@ -15,12 +16,12 @@ export function createCocktail(images) {
               </div>
               <div class="btn-item">
                 <div class="info-btn">
-                  <p class="info-btn-descr js-learn-btn">Learn more</p>
+                  <button type="button" class="info-btn-descr js-learn-btn" data-modal-open>Learn more</button>
                 </div>
                 <div class="add-favorite">
-                  <p class="add-descr">Add To</p>
+                  <button type="button" class="add-descr">Add To</button>
                   <svg class="add-favorite__icon" width="20" height="20">
-                    <use href="images/sprite.svg#heart"></use>
+                    <use href="./images/heart.svg#heart"></use>
                   </svg>
                 </div>
               </div>
@@ -30,7 +31,7 @@ export function createCocktail(images) {
       `;
     })
     .join('');
-  return markup;
+  gallery.insertAdjacentHTML('beforeend', markup);
 }
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)=======================
