@@ -10,7 +10,7 @@ import {
   createMarkupDesktop,
 } from './js/createCocktail';
 
-import { openModalWindow } from './js/modalWindow';
+import { openModalWindow } from './js/modalWindow.js';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -18,8 +18,12 @@ const refs = {
   loadMoreBtn: document.querySelector('.btn-load-more'),
   searchLetterCocktailMobile: document.querySelector('.js-letter-cocktail-1'),
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
-  btnLS: document.querySelector('.add-descr'),
+  modal: document.querySelector('.modal'),
 };
+
+refs.gallery.addEventListener('click', openModalWindow);
+refs.modal.addEventListener('click', openModalWindow);
+
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)============================
 createMarkup();
 // ====================ФУНКЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ DEKSTOP, TABLET==============================================
