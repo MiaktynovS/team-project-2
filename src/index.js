@@ -10,6 +10,8 @@ import {
   createMarkupDesktop,
 } from './js/createCocktail';
 
+import { openModalWindow } from './js/modalWindow';
+
 const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
