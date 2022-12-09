@@ -37,6 +37,7 @@ refs.searchLetterCocktailMobile.addEventListener(
   onClickLetterCocktail
 );
 refs.searchLetterCocktail.addEventListener('click', onClickLetterCocktail);
+refs.gallery.addEventListener('click', saveFavoritCocktailLS);
 // refs.btnLS.addEventListener('click', saveFavoritCocktailLS);
 
 function onSearchForm(event) {
@@ -66,10 +67,11 @@ function onClickLetterCocktail(event) {
 
 // =====================================================
 
-export function saveFavoritCocktailLS(event) {
+function saveFavoritCocktailLS(event) {
   // FavoriteCocktails - Улюблені коктейлі
   // FavoriteIngridients - Улюблені Інгрідієнти
-  let arr;
+
   const cocktailName = event.target.getAttribute('data-cocktail-name');
+  console.log(cocktailName);
   saveToLS('FavoriteCocktails', cocktailName);
 }

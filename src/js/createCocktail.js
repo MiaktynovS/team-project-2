@@ -1,5 +1,3 @@
-import { saveFavoritCocktailLS } from '../index.js';
-const gallery = document.querySelector('.gallery');
 const markupMobile = document.querySelector('.dropdown-content');
 const markupDesktop = document.querySelector('.list-cocktail');
 
@@ -32,9 +30,8 @@ export function createCocktail(images) {
       `;
     })
     .join('');
-  document
-    .querySelector('.gallery')
-    .addEventListener('click', saveFavoritCocktailLS);
+  const gallery = document.querySelector('.gallery');
+  console.log(gallery);
   gallery.insertAdjacentHTML('beforeend', markup);
 }
 
