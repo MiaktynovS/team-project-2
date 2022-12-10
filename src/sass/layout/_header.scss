@@ -125,13 +125,50 @@ display: flex;
   }
   
   .nav-list__link{
+      position: relative;
       font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 400;
       font-size: 18px;
       line-height: 0.75;
       letter-spacing: 0.02em;        
       color: #202025;
+  }
+
+ .favorite-list{
+    position: absolute;
+    width: 210px;
+    height: 96px;
+    top: 71px;
+    border: 1px solid #FD5103;
+    border-radius: 4px;
+    font-family: 'Poppins';
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    // opacity: 0;
+    // visibility: hidden;
+    // pointer-events: none;
+  } 
+
+  .favorite-list.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+  .favorite-list__item-cocktails{
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    color: #000000;
+  }
+
+  .favorite-list__item-ingredients{
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    border-top: 1px solid #FD5103;
+    background-color: #FD5103;
+    color: fff;
   }
 
   .search-header__input{
