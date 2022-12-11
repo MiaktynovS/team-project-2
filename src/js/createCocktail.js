@@ -1,6 +1,7 @@
 const markupMobile = document.querySelector('.dropdown-content');
 const markupDesktop = document.querySelector('.list-cocktail');
 
+// ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ПО ПОИСКУ=======================
 export function createCocktail(images) {
   const markup = images
     .map(image => {
@@ -15,7 +16,7 @@ export function createCocktail(images) {
               </div>
               <div class="btn-item">
                 <div class="info-btn">
-                  <button type="button" class="info-btn-descr js-learn-btn" data-modal-open>Learn more</button>
+                  <button type="button" class="info-btn-descr js-learn-btn" data-modal-open="${strDrink}">Learn more</button>
                 </div>
                 <div class="add-favorite">
                   <button type="button" class="add-descr" data-cocktail-name="${strDrink}">Add To</button>
@@ -31,8 +32,38 @@ export function createCocktail(images) {
     })
     .join('');
   const gallery = document.querySelector('.gallery');
-  console.log(gallery);
   gallery.insertAdjacentHTML('beforeend', markup);
+}
+
+// ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ИНГРИДИЕНТОВ В МОДАЛЬНОМ ОКНЕ=======================
+export function createIngredientCocktail(ingredients) {
+  const markup = ingredients
+    .map(ingredient => {
+      const { strDrinkThumb, strImageAttribution, strDrink } = ingredient;
+      return `
+        <a class="gallery__link">
+          <div class="gallery-item">
+            <img class="gallery-item__img" src="${strDrinkThumb}" alt="${strImageAttribution}" loading="lazy" />
+            <div class="info">
+              <div class="info-item">
+                <p class="info-descr">${strDrink}</p>
+              </div>
+              <div class="btn-item">
+                <div class="add-favorite">
+                  <button type="button" class="add-descr" data-cocktail-name="${strDrink}">Add To</button>
+                  <svg class="add-favorite__icon" width="20" height="20">
+                    <use href="./images/heart.svg#heart"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      `;
+    })
+    .join('');
+  const modal = document.querySelector('.modal');
+  modal.insertAdjacentHTML('beforeend', markup);
 }
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)=======================
