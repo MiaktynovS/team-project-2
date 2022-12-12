@@ -23,6 +23,8 @@ const refs = {
   modal: document.querySelector('.modal'),
   closeModalBtn: document.querySelector('.modal-close-btn'),
   modalCreateCocktail: document.querySelector('.modal-create-cocktail'),
+  titleContainer2: document.querySelector('.title-2'),
+  svg: document.querySelector('.add-favorite__icon'),
 };
 
 refs.gallery.addEventListener('click', openModalWindow);
@@ -67,7 +69,7 @@ function onClickCocktailBtn(event) {
   // const reset = '';
   // refs.modal.insertAdjacentHTML('afterbegin', reset);
   page = 1;
-  // const ingredient = event.target.getAttribute('data-id');
+  const ingredient = event.target.getAttribute('data-id');
   const {id} = event.target.dataset;
 
   fetchIngredientCocktails(id).then(data => {
