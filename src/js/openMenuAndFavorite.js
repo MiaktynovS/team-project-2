@@ -13,7 +13,6 @@
     refs.openMenuBtn.addEventListener('click', toggleModal);
     refs.closeMenuBtn.addEventListener('click', toggleModal);
     refs.openList.addEventListener('click', toggleList);
-    // refs.closeList.addEventListener('click', toggleList);
     refs.openmList.addEventListener('click', togglemList);
   
     function toggleModal() {
