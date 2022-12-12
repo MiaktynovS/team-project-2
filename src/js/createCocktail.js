@@ -1,5 +1,7 @@
 const markupMobile = document.querySelector('.dropdown-content');
 const markupDesktop = document.querySelector('.list-cocktail');
+const svg = document.querySelector('.add-favorite__icon');
+const containerSvg = document.querySelector('.add-favorite');
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ПО ПОИСКУ=======================
 export function createCocktail(images) {
@@ -19,10 +21,13 @@ export function createCocktail(images) {
                   <button type="button" class="info-btn-descr js-learn-btn" data-modal-open="${strDrink}" data-id="${idDrink}">Learn more</button>
                 </div>
                 <div class="add-favorite">
-                  <button type="button" class="add-descr" data-cocktail-name="${strDrink}">Add To</button>
+                  <button type="button" class="add-descr" data-cocktail-name="${strDrink}">Add To
+                  
+                  </button>
                   <svg class="add-favorite__icon" width="20" height="20">
-                    <use href="./images/heart.svg#heart"></use>
+                    <use href="../src/images/heart.svg"></use>
                   </svg>
+               
                 </div>
               </div>
             </div>
@@ -33,6 +38,10 @@ export function createCocktail(images) {
     .join('');
   const gallery = document.querySelector('.gallery');
   gallery.insertAdjacentHTML('beforeend', markup);
+  // const svg = document.querySelector('.add-favorite__icon');
+  // const containerSvg = document.querySelector('.add-favorite');
+  // containerSvg.insertAdjacentElement('beforeend', svg);
+  // refs.svg.style.display = 'block';
 }
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ИНГРИДИЕНТОВ В МОДАЛЬНОМ ОКНЕ=======================
