@@ -22,11 +22,16 @@ const refs = {
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
   modal: document.querySelector('.modal'),
   closeModalBtn: document.querySelector('.modal-close-btn'),
+  titleContainer2: document.querySelector('.title-2'),
+  svg: document.querySelector('.add-favorite__icon'),
 };
 
 refs.gallery.addEventListener('click', openModalWindow);
 refs.modal.addEventListener('click', openModalWindow);
 refs.gallery.addEventListener('click', onClickCocktailBtn);
+
+refs.titleContainer2.style.display = 'none';
+refs.svg.style.display = 'none';
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)============================
 createMarkup();
@@ -35,9 +40,11 @@ createMarkupDesktop();
 // ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ====================================================================
 fetchRandomCocktails().then(data => {
   // console.log(data.drinks);
+  refs.svg.style.display = 'block';
   createCocktail(data.drinks);
 });
 fetchRandomCocktails();
+
 // =======================LISTENER =================================================================================
 refs.searchForm.addEventListener('submit', onSearchForm);
 refs.searchLetterCocktailMobile.addEventListener(
@@ -56,6 +63,7 @@ function onSearchForm(event) {
 
   fetchCocktails(query).then(data => {
     // console.log(data.drinks);
+    refs.svg.style.display = 'block';
     createCocktail(data.drinks);
   });
 }
@@ -70,8 +78,8 @@ function onClickCocktailBtn(event) {
   console.log(ingredient);
   fetchIngredientCocktails(ingredient).then(data => {
     console.log(data.drinks);
+    refs.svg.style.display = 'block';
     createIngredientCocktail(data.drinks);
-
   });
 }
 
@@ -84,6 +92,7 @@ function onClickLetterCocktail(event) {
 
   fetchLetterCocktails(letter).then(data => {
     // console.log(data.drinks);
+    refs.svg.style.display = 'block';
     createCocktail(data.drinks);
   });
 }
