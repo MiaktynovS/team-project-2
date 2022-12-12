@@ -1,10 +1,9 @@
 const markupMobile = document.querySelector('.dropdown-content');
 const markupDesktop = document.querySelector('.list-cocktail');
-const svg = document.querySelector('.add-favorite__icon');
-const containerSvg = document.querySelector('.add-favorite');
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ПО ПОИСКУ=======================
 export function createCocktail(images) {
+  const svg = document.querySelector('.add-favorite__icon use').href.baseVal;
   const markup = images
     .map(image => {
       const { strDrinkThumb, strImageAttribution, strDrink, idDrink } = image;
@@ -21,13 +20,18 @@ export function createCocktail(images) {
                   <button type="button" class="info-btn-descr js-learn-btn" data-modal-open="${strDrink}" data-id="${idDrink}">Learn more</button>
                 </div>
                 <div class="add-favorite">
-                  <button type="button" class="add-descr" data-cocktail-name="${strDrink}">Add To
-                  
+                  <button type="button" class="add-descr js_btn_fav_add" data-cocktail-name="${strDrink}">
+                  Add To
+                   <svg class="add-favorite__icon" width="21" height="18">
+                      <use href="${svg}"></use>
+                    </svg>
                   </button>
-                  <svg class="add-favorite__icon" width="20" height="20">
-                    <use href="../src/images/heart.svg"></use>
-                  </svg>
-               
+                   <button type="button" class="add-descr js_btn_fav_remove" data-cocktail-name-remove="${strDrink}">
+                  Remove
+                  <svg class="add-favorite__icon" width="21" height="18">
+                      <use href="${svg}"></use>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -38,6 +42,8 @@ export function createCocktail(images) {
     .join('');
   const gallery = document.querySelector('.gallery');
   gallery.insertAdjacentHTML('beforeend', markup);
+  const btnRemove = document.querySelector('js_btn_fav_remove');
+
   // const svg = document.querySelector('.add-favorite__icon');
   // const containerSvg = document.querySelector('.add-favorite');
   // containerSvg.insertAdjacentElement('beforeend', svg);
@@ -48,7 +54,8 @@ export function createCocktail(images) {
 export function createIngredientCocktail(ingredients) {
   const markup = ingredients
     .map(ingredient => {
-      const { strDrinkThumb, strImageAttribution, strDrink, idDrink } = ingredient;
+      const { strDrinkThumb, strImageAttribution, strDrink, idDrink } =
+        ingredient;
       return `
       <div class="modal-container-1">
       <h2 class="modal-container__header">${strDrink}</h2>
