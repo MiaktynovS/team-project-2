@@ -24,8 +24,9 @@ export async function fetchRandomCocktails() {
 }
 
 export async function fetchIngredientCocktails(ingredient) {
-  const response = await fetch(`${BASE_URL}s=${ingredient}`);
+  console.log(ingredient);
+  const response = await fetch(`${INGREDIENT_URL}i=${ingredient}`);
   const data = await response.json();
-  // console.log(data);
+  console.log(data);
   return data;
 }
