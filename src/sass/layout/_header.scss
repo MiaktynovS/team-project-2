@@ -131,6 +131,7 @@ display: flex;
       line-height: 0.75;
       letter-spacing: 0.02em;        
       color: #202025;
+      cursor: pointer;
   }
 
  .favorite-list{
@@ -144,9 +145,9 @@ display: flex;
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 0.02em;
-    // opacity: 0;
-    // visibility: hidden;
-    // pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   } 
 
   .favorite-list.is-open {
@@ -168,7 +169,11 @@ display: flex;
     padding-bottom: 12px;
     border-top: 1px solid #FD5103;
     background-color: #FD5103;
-    color: fff;
+    color: #FFF;
+  }
+
+  .favorite-list__link{
+    text-decoration: none;
   }
 
   .search-header__input{

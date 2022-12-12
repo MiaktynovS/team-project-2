@@ -8,6 +8,11 @@ import {
   createMarkup,
   createMarkupDesktop,
 } from './js/createCocktail';
+import {
+  toggleModal,
+  toggleList,
+  togglemList,
+} from './js/openMenuAndFavorite'
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -16,6 +21,7 @@ const refs = {
   searchLetterCocktailMobile: document.querySelector('.js-letter-cocktail-1'),
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
 };
+
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)============================
 createMarkup();
 // ====================ФУНКЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ DEKSTOP, TABLET==============================================
@@ -58,3 +64,7 @@ function onClickLetterCocktail(event) {
     createCocktail(data.drinks);
   });
 }
+
+toggleModal();
+toggleList();
+togglemList();
