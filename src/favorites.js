@@ -11,10 +11,12 @@ const refs = {
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
   favoritCocktails: document.querySelector('.favorit'),
   btnLS: document.querySelector('.add-descr'),
+  titleContainer1: document.querySelector('.title-1'),
 };
 
 // =======================LISTENER =========================================================
 refs.searchForm.addEventListener('submit', onSearchForm);
+refs.titleContainer1.style.display = 'none';
 // ======================================================================================
 function onSearchForm(event) {
   event.preventDefault();
