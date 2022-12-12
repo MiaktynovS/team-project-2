@@ -31,7 +31,7 @@ refs.modal.addEventListener('click', openModalWindow);
 refs.gallery.addEventListener('click', onClickCocktailBtn);
 
 refs.titleContainer2.style.display = 'none';
-refs.svg.style.display = 'none';
+// refs.svg.style.display = 'none';
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ (ВЫПЫДАЮЩИЙ СПИСОК)============================
 createMarkup();
@@ -40,7 +40,7 @@ createMarkupDesktop();
 // ====================ВЫВОД РАНДОМНЫХ КОКТЕЙЛЕЙ====================================================================
 fetchRandomCocktails().then(data => {
   // console.log(data.drinks);
-  refs.svg.style.display = 'block';
+  // refs.svg.style.display = 'block';
   createCocktail(data.drinks);
 });
 fetchRandomCocktails();
@@ -63,7 +63,7 @@ function onSearchForm(event) {
 
   fetchCocktails(query).then(data => {
     // console.log(data.drinks);
-    refs.svg.style.display = 'block';
+    // refs.svg.style.display = 'block';
     createCocktail(data.drinks);
   });
 }
@@ -78,7 +78,7 @@ function onClickCocktailBtn(event) {
   console.log(ingredient);
   fetchIngredientCocktails(ingredient).then(data => {
     console.log(data.drinks);
-    refs.svg.style.display = 'block';
+    // refs.svg.style.display = 'block';
     createIngredientCocktail(data.drinks);
   });
 }
@@ -92,7 +92,7 @@ function onClickLetterCocktail(event) {
 
   fetchLetterCocktails(letter).then(data => {
     // console.log(data.drinks);
-    refs.svg.style.display = 'block';
+    // refs.svg.style.display = 'block';
     createCocktail(data.drinks);
   });
 }

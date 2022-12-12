@@ -22,7 +22,11 @@ export function createCocktail(images) {
                 </div>
                 <div class="add-favorite">
                   <button type="button" class="add-descr" data-cocktail-name="${strDrink}">Add To
+                  
                   </button>
+                  <svg class="add-favorite__icon" width="20" height="20">
+                    <use href="../src/images/heart.svg"></use>
+                  </svg>
                
                 </div>
               </div>
@@ -34,10 +38,10 @@ export function createCocktail(images) {
     .join('');
   const gallery = document.querySelector('.gallery');
   gallery.insertAdjacentHTML('beforeend', markup);
-  const svg = document.querySelector('.add-favorite__icon');
-  const containerSvg = document.querySelector('.add-favorite');
-  containerSvg.insertAdjacentElement('beforeend', svg);
-  refs.svg.style.display = 'block';
+  // const svg = document.querySelector('.add-favorite__icon');
+  // const containerSvg = document.querySelector('.add-favorite');
+  // containerSvg.insertAdjacentElement('beforeend', svg);
+  // refs.svg.style.display = 'block';
 }
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ИНГРИДИЕНТОВ В МОДАЛЬНОМ ОКНЕ=======================
