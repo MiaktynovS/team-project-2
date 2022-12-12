@@ -22,6 +22,7 @@ const refs = {
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
   modal: document.querySelector('.modal'),
   closeModalBtn: document.querySelector('.modal-close-btn'),
+  modalCreateCocktail: document.querySelector('.modal-create-cocktail'),
   titleContainer2: document.querySelector('.title-2'),
   svg: document.querySelector('.add-favorite__icon'),
 };
@@ -69,16 +70,15 @@ function onSearchForm(event) {
 }
 
 function onClickCocktailBtn(event) {
-  // refs.modal.innerHTML = '';
+  refs.modalCreateCocktail.innerHTML = '';
   // refs.closeModalBtn.style.display = 'block';
   // const reset = '';
   // refs.modal.insertAdjacentHTML('afterbegin', reset);
   page = 1;
-  const ingredient = event.target.getAttribute('data-modal-open');
-  console.log(ingredient);
-  fetchIngredientCocktails(ingredient).then(data => {
-    console.log(data.drinks);
-    // refs.svg.style.display = 'block';
+
+  const ingredient = event.target.getAttribute('data-id');
+  const {id} = event.target.dataset;
+  fetchIngredientCocktails(id).then(data => {
     createIngredientCocktail(data.drinks);
   });
 }
