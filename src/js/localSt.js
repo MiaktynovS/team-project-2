@@ -24,3 +24,12 @@ export function loadFromLS(key) {
     return item;
   }
 }
+export function removeFromLS(key) {
+  const item = localStorage.removeItem(key);
+  try {
+    const parseItem = JSON.parse(item);
+    return parseItem;
+  } catch {
+    return item;
+  }
+}

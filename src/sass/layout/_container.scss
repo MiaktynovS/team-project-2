@@ -280,24 +280,31 @@
 }
 
 .add-descr {
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  color: #FD5103;
+  letter-spacing: .02em;
+  color: #fd5103;
+  background-color: #fff;
   border: none;
-  background-color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
   // padding-left: 12px;
 }
 
 .add-favorite__icon {
-  fill: #FD5103;
+  margin-left: 5px;
+  stroke: #FD5103;
+  stroke-width: 3;
+  fill: #fcfcfc;
+  contain: content;
 }
 
-// .btn-load-more.is-hidden {
-//   display: none;
-// }
-
+.add-descr:hover .add-favorite__icon, .add-descr:visited .add-favorite__icon {
+  fill: #FD5103;
+}
 .btn-load-more {
   display: block;
   margin: 25px auto 0 auto;
