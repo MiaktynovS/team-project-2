@@ -47,19 +47,25 @@ function removeLSFavoritCocktailLS(event) {
   const cocktailNameRemove = event.target.getAttribute(
     'data-cocktail-name-remove'
   );
-  console.log(cocktailNameRemove);
-  //console.log(removeFromLS('FavoriteCocktails'));
-  // removeFromLS('FavoriteCocktails', cocktailNameRemove);
+  // console.log(cocktailNameRemove);
 
-  const newArr = arr.map(cocktailName => {
+  const fetches = arr.map(cocktailName => {
     return fetch(`${BASE_URL}s=${cocktailName}`).then(res => res.json());
   });
-  Promise.all(newArr).then(arr => {
+  Promise.all(fetches).then(arr => {
+    console.log(arr);
     arr = arr.map(obj => {
+      console.log(obj.drinks[0]);
       return obj.drinks[0];
     });
-    console.log(arr);
+    const newArr = arr.splice(cocktailNameRemove, 1);
+    refs.gallery.innerHTML = '';
+    // console.log(arr);
     createCocktail(arr);
+    const btnAdd = document.querySelectorAll('.js_btn_fav_add');
+    for (let btn of btnAdd) {
+      btn.style.display = 'none';
+    }
   });
 }
 removeLSFavoritCocktailLS();
