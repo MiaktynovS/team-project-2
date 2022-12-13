@@ -4,10 +4,9 @@ import { loadFromLS } from './js/localSt.js';
 import { createCocktail } from './js/createCocktail';
 
 import {
-  toggleModal,
   toggleList,
   togglemList,
-} from './js/openMenuAndFavorite'
+} from './js/openMenuAndFavorite.js'
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -41,7 +40,6 @@ function loadLSCocktails() {
 }
 loadLSCocktails();
 
-toggleModal();
 toggleList();
 togglemList();
 

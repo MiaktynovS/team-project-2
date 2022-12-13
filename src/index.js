@@ -10,10 +10,9 @@ import {
   createMarkupDesktop,
 } from './js/createCocktail';
 import {
-  toggleModal,
   toggleList,
   togglemList,
-} from './js/openMenuAndFavorite'
+} from './js/openMenuAndFavorite.js'
 
 import { openModalWindow } from './js/modalWindow.js';
 
@@ -74,7 +73,6 @@ function onClickLetterCocktail(event) {
   });
 }
 
-toggleModal();
 toggleList();
 togglemList();
 // =====================================================
