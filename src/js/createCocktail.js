@@ -42,12 +42,7 @@ export function createCocktail(images) {
     .join('');
   const gallery = document.querySelector('.gallery');
   gallery.insertAdjacentHTML('beforeend', markup);
-  const btnRemove = document.querySelector('js_btn_fav_remove');
-
-  // const svg = document.querySelector('.add-favorite__icon');
-  // const containerSvg = document.querySelector('.add-favorite');
-  // containerSvg.insertAdjacentElement('beforeend', svg);
-  // refs.svg.style.display = 'block';
+  document.getElementById('opacity').style.opacity = '0';
 }
 
 // ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ ИНГРИДИЕНТОВ В МОДАЛЬНОМ ОКНЕ=======================
