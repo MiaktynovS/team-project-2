@@ -1,8 +1,3 @@
-// .search-header {
-//   width: 100%;
-//   margin: 20px auto;
-// }
-
 .header__list{
   padding-top: 20px;
   display: flex;
@@ -28,6 +23,14 @@ display: flex;
   background: none;
 }
 
+.search-header__btn{
+  background: none;
+}
+
+.search-form{
+  display: flex;
+}
+
 @media screen and (min-width:320px) {
     .header__list{
       display: flex;
@@ -38,9 +41,7 @@ display: flex;
 }
 
 @media screen and (max-width:767px) {
-  .header__list{
-    justify-content: none;
-  }
+ 
 
   .search-header__btn{
     display: none;
@@ -50,23 +51,26 @@ display: flex;
       display: none;
   }
 
-  // .input-icon{
-  //   display: none;
-  // }
 }
 @media screen and (min-width:768px){
-  .search-header{
-    position: relative;
+  .header__list{
+    justify-content: flex-start;
   }
-
+  
   .search-header__btn{
     width: 40px;
     height: 40px;
-    position: absolute;
-    right: 55%;
-    border: 1px solid #FD5103;
+    margin-left: 190px;
+    border: 1 solid #FD5103;    
     border-radius: 4px 0px 0px 4px;
+
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background: none;
+
   }
   
   .search-header__input{
@@ -75,12 +79,16 @@ display: flex;
     left: 640px;
     top: 1.5px; 
     border: 1px solid #FD5103;
+
+    border-left: 0;
+    border-radius: 0px 4px 4px 0px;
+
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     border-left: none;
+
     margin-right: 30px;
-    margin-left: 190px;
-    padding-left: 23px;
+    padding-left: 8px;
     outline: none;
     padding-left: 30px;
   }
@@ -99,6 +107,7 @@ display: flex;
       display: block;
       margin-left: 4px;
     }
+
 
 }
 @media screen and (max-width:1279px){
@@ -131,13 +140,54 @@ display: flex;
   }
   
   .nav-list__link{
+      position: relative;
       font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 400;
       font-size: 18px;
       line-height: 0.75;
       letter-spacing: 0.02em;        
       color: #202025;
+  }
+
+ .favorite-list{
+    position: absolute;
+    width: 210px;
+    height: 96px;
+    top: 71px;
+    border: 1px solid #FD5103;
+    border-radius: 4px;
+    font-family: 'Poppins';
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  } 
+
+  .favorite-list.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+  .favorite-list__item-cocktails{
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    color: #000000;
+  }
+
+  .favorite-list__item-ingredients{
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    border-top: 1px solid #FD5103;
+    background-color: #FD5103;
+    color: #FFF;
+  }
+
+  .favorite-list__link{
+    text-decoration: none;
   }
 
   .search-header__input{

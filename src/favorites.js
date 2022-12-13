@@ -3,6 +3,11 @@ import { loadFromLS, removeFromLS, saveToLS } from './js/localSt.js';
 
 import { createCocktail } from './js/createCocktail';
 
+import {
+  toggleList,
+  togglemList,
+} from './js/openMenuAndFavorite.js'
+
 const refs = {
   searchForm: document.querySelector('#search-form'),
   gallery: document.querySelector('.gallery'),
@@ -42,6 +47,11 @@ function loadLSCocktails() {
 }
 loadLSCocktails();
 
+
+toggleList();
+togglemList();
+
+
 function removeLSFavoritCocktailLS(event) {
   const arr = loadFromLS('FavoriteCocktails');
   const cocktailNameRemove = event.target.getAttribute(
@@ -69,3 +79,4 @@ function removeLSFavoritCocktailLS(event) {
   });
 }
 removeLSFavoritCocktailLS();
+
