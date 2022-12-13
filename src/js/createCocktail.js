@@ -49,36 +49,34 @@ export function createCocktail(images) {
 export function createIngredientCocktail(ingredients) {
   const markup = ingredients
     .map(ingredient => {
-      const { strDrinkThumb, strImageAttribution, strDrink, idDrink } =
+      const { strDrinkThumb, strImageAttribution, strDrink, strInstructions, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5 } =
         ingredient;
       return `
       <div class="modal-container-1">
       <h2 class="modal-container__header">${strDrink}</h2>
       <div class="modal-container__descr">
-        <h3 class="modal-container__descr-header">${strDrink}</h3>
-        <p class="info-descr">
-          Add the gin, Campari and sweet vermouth to a mixing glass filled with ice, and stir until well-chilled. Strain into a rocks glass filled with large ice cubes. Garnish with an orange peel.
-        </p>
+        <h3 class="modal-container__descr-header">Instractions:</h3>
+        <p class="info-descr">${strInstructions}</p>
       </div>
       <img class="modal-container__img" src="${strDrinkThumb}" alt="${strImageAttribution}" loading="lazy"/>
       <div class="modal-ingredients">
-        <h3 class="modal-ingredients__header">${strDrink}</h3>
-        <h4 class="modal-ingredients__subheader">${strDrink}</h4>
+        <h3 class="modal-ingredients__header">INGREDIENTS</h3>
+        <h4 class="modal-ingredients__subheader">Per cocktail</h4>
         <ul class="modal-ingredients__list">
           <li>
-            <a href="">✶  Ice</a>
+            <a href="">${strIngredient1}</a>
           </li>
           <li>
-            <a href="">✶  1 ounce gin</a>
+            <a href="">${strIngredient2}</a>
           </li>
           <li>
-            <a href="">✶  1 ounce Campari</a>
+            <a href="">${strIngredient3}</a>
           </li>
           <li>
-            <a href="">✶  1 ounce sweet vermouth</a>
+            <a href="">${strIngredient4}</a>
           </li>
           <li>
-            <a href="">✶  Garnish: orange peel</a>
+            <a href="">${strIngredient5}</a>
           </li>
         </ul>
 
@@ -90,28 +88,28 @@ export function createIngredientCocktail(ingredients) {
     <div class="modal-container-2">
       <div class="modal-container-flex">
         <div class="modal-container__img">
-          <img class="modal-img" src="./images/ACID.png" alt="Коктейль" loading="lazy"/>
+          <img class="modal-img" src="${strDrinkThumb}" alt="${strImageAttribution}" loading="lazy"/>
         </div>
         <div>
-          <h2 class="modal-container__header">Negroni</h2>
+          <h2 class="modal-container__header">${strDrink}</h2>
           <div class="modal-ingredients">
             <h3 class="modal-ingredients__header">INGREDIENTS</h3>
             <h4 class="modal-ingredients__subheader">Per cocktail</h4>
             <ul class="modal-ingredients__list">
               <li>
-                <a href="">✶  Ice</a>
+                <a href="">${strIngredient1}</a>
               </li>
               <li>
-                <a href="">✶  1 ounce gin</a>
+                <a href="">${strIngredient2}</a>
               </li>
               <li>
-                <a href="">✶  1 ounce Campari</a>
+                <a href="">${strIngredient3}</a>
               </li>
               <li>
-                <a href="">✶  1 ounce sweet vermouth</a>
+                <a href="">${strIngredient4}</a>
               </li>
               <li>
-                <a href="">✶  Garnish: orange peel</a>
+                <a href="">${strIngredient5}</a>
               </li>
             </ul>
         </div>
@@ -119,9 +117,7 @@ export function createIngredientCocktail(ingredients) {
     </div>
         <div class="modal-container__descr">
           <h3 class="modal-container__descr-header">Instractions:</h3>
-          <p class="info-descr">
-            Add the gin, Campari and sweet vermouth to a mixing glass filled with ice, and stir until well-chilled. Strain into a rocks glass filled with large ice cubes. Garnish with an orange peel.
-          </p>
+          <p class="info-descr">${strInstructions}</p>
         </div>
         <button type="button" class="add-favorite modal-btn">Add To Favorite</button>
         <!-- <button type="button" class="add-favorite modal-btn">Remove from favorite</button> -->
