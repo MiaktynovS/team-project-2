@@ -24,13 +24,12 @@ const refs = {
   closeModalBtn: document.querySelector('.modal-close-btn'),
   modalCreateCocktail: document.querySelector('.modal-create-cocktail'),
   titleContainer2: document.querySelector('.title-2'),
-  // svg: document.querySelector('.add-favorite__icon use').href.baseVal,
+  svg: document.querySelector('.add-favorite__icon use').href.baseVal,
 };
 
 refs.gallery.addEventListener('click', openModalWindow);
 refs.modal.addEventListener('click', openModalWindow);
 refs.gallery.addEventListener('click', onClickCocktailBtn);
-
 refs.titleContainer2.style.display = 'none';
 
 window.addEventListener('load', () => {
