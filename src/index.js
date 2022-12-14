@@ -11,10 +11,7 @@ import {
   createMarkup,
   createMarkupDesktop,
 } from './js/createCocktail';
-import {
-  toggleList,
-  togglemList,
-} from './js/openMenuAndFavorite.js'
+import { toggleList, togglemList } from './js/openMenuAndFavorite.js';
 
 import { openModalWindow } from './js/modalWindow.js';
 
@@ -106,7 +103,7 @@ function onClickLetterCocktail(event) {
   page = 1;
   const letter = event.target.textContent;
 
-  console.log(letter);
+  // console.log(letter);
 
   fetchLetterCocktails(letter).then(data => {
     // console.log(data.drinks);
