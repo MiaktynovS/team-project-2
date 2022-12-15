@@ -5,7 +5,18 @@ export function openModalWindow(e) {
     let closeModal = document.querySelector('[data-modal-close]');
     closeModal.addEventListener('click', (e) => {
       document.querySelector('[data-modal]').classList.add('is-hidden');
-      console.log(e.target);
+    });
+  }
+
+}
+
+export function openModalWindowIngredient(e) {
+
+  if (e.target.classList.contains('js-ingredient-link')) {
+    document.querySelector('[data-modal-ingredient]').classList.toggle('is-hidden');
+    let closeModal = document.querySelector('[data-modal-ingredient-close]');
+    closeModal.addEventListener('click', (e) => {
+      document.querySelector('[data-modal-ingredient]').classList.add('is-hidden');
     });
   }
 

@@ -60,6 +60,7 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 8px;
+    align-items: center;
   }
 
   .pagination-item {
@@ -93,7 +94,7 @@
   .pagination-next {
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
+    // align-items: center;
   }
 
   .pagination-prew__icon {
@@ -157,6 +158,12 @@
     height: 40px;
     font-weight: 400;
     font-size: 16px;
+  }
+
+  .pagination-item:hover,
+  .pagination-item:focus {
+    background-color: #FE7031;
+    color: #FFFFFF;
   }
 
   .pagination-dot {
