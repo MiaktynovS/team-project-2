@@ -49,7 +49,7 @@ export function createCocktail(images) {
 export function createIngredientCocktail(ingredients) {
   const markup = ingredients
     .map(ingredient => {
-      const { strDrinkThumb, strImageAttribution, strDrink, strInstructions, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5 } =
+      const { strDrinkThumb, strImageAttribution, strDrink, strInstructions, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, idDrink } =
         ingredient;
       return `
       <div class="modal-container-1">
@@ -64,19 +64,19 @@ export function createIngredientCocktail(ingredients) {
         <h4 class="modal-ingredients__subheader">Per cocktail</h4>
         <ul class="modal-ingredients__list">
           <li>
-            <a href="">${strIngredient1}</a>
+          <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}" data-id="${strDrink}" data-name="${strIngredient1}">✶ ${strIngredient1}</button>
           </li>
           <li>
-            <a href="">${strIngredient2}</a>
+            <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}" data-id="${strDrink}" data-name="${strIngredient2}">✶ ${strIngredient2}</button>
           </li>
           <li>
-            <a href="">${strIngredient3}</a>
+            <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}" data-id="${strDrink}" data-name="${strIngredient3}">✶ ${strIngredient3}</button>
           </li>
           <li>
-            <a href="">${strIngredient4}</a>
+            <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}" data-id="${strDrink}" data-name="${strIngredient4}">✶ ${strIngredient4}</button>
           </li>
           <li>
-            <a href="">${strIngredient5}</a>
+            <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}" data-id="${strDrink}" data-name="${strIngredient5}">✶ ${strIngredient5}</button>
           </li>
         </ul>
 
@@ -97,19 +97,24 @@ export function createIngredientCocktail(ingredients) {
             <h4 class="modal-ingredients__subheader">Per cocktail</h4>
             <ul class="modal-ingredients__list">
               <li>
-                <a href="">${strIngredient1}</a>
+                <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}"
+                data-id="${idDrink}" data-name="${strIngredient1}">✶ ${strIngredient1}</button>
               </li>
               <li>
-                <a href="">${strIngredient2}</a>
+                <button type="button" type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}"
+                data-id="${idDrink}" data-name="${strIngredient2}">✶ ${strIngredient2}</button>
               </li>
               <li>
-                <a href="">${strIngredient3}</a>
+                <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}"
+                data-id="${idDrink}" data-name="${strIngredient3}">✶ ${strIngredient3}</button>
               </li>
               <li>
-                <a href="">${strIngredient4}</a>
+                <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}"
+                data-id="${idDrink}" data-name="${strIngredient4}">✶ ${strIngredient4}</button>
               </li>
               <li>
-                <a href="">${strIngredient5}</a>
+                <button type="button" class="modal-ingredients__btn js-ingredient-link" id="inredient-list" data-modal-open="${strDrink}"
+                data-id="${idDrink}" data-name="${strIngredient5}">✶ ${strIngredient5}</button>
               </li>
             </ul>
         </div>
@@ -126,6 +131,48 @@ export function createIngredientCocktail(ingredients) {
     })
     .join('');
   const modal = document.querySelector('.modal-create-cocktail');
+  modal.insertAdjacentHTML('beforeend', markup);
+}
+
+// ==================ФУНЦИЯ ДОБАВЛЕНИЯ РАЗМЕТКИ В МОДАЛЬНОМ ОКНЕ ИНГРИДИЕНТА=======================
+
+export function createIngredientCard(ingredients) {
+  const markup = ingredients
+    .map(ingredient => {
+      const { strType, strIngredient, strDescription } =
+        ingredient;
+      return `
+      <h3 class="modal-container__ingredient">${strIngredient}</h3>
+      <div class="modal-container__descr">
+        <h3 class="modal-container__descr-header">${strType}</h3>
+        <div class="line">
+
+        </div>
+        <p class="info-descr">${strDescription}</p>
+      </div>
+
+      <div class="modal-ingredients">
+        <ul class="modal-ingredient__list">
+          <li>
+            <a href="">✶  Type: ${strType}</a>
+          </li>
+          <li>
+            <a href="">✶  Country of origin:</a>
+          </li>
+          <li>
+            <a href="">✶  Alcohol by volume:</a>
+          </li>
+          <li>
+            <a href="">✶  Flavour:</a>
+          </li>
+        </ul>
+
+        <button type="button" class="add-favorite modal-btn">Add To Favorite</button>
+       </div>
+      `;
+    })
+    .join('');
+  const modal = document.querySelector('.modal-create-ingredient');
   modal.insertAdjacentHTML('beforeend', markup);
 }
 

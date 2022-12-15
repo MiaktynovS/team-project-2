@@ -4,19 +4,25 @@ import {
   fetchLetterCocktails,
   fetchRandomCocktails,
   fetchIngredientCocktails,
+  fetchNameIngredientCocktail,
 } from './js/fetchCocktails';
 import {
   createCocktail,
   createIngredientCocktail,
   createMarkup,
   createMarkupDesktop,
+  createIngredientCard,
 } from './js/createCocktail';
 import {
   toggleList,
   togglemList,
-} from './js/openMenuAndFavorite.js'
+} from './js/openMenuAndFavorite.js';
 
-import { openModalWindow } from './js/modalWindow.js';
+import {
+  openModalWindow,
+  openModalWindowIngredient } from './js/modalWindow.js';
+
+import { element } from './js/pagination.js';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -25,16 +31,29 @@ const refs = {
   searchLetterCocktailMobile: document.querySelector('.js-letter-cocktail-1'),
   searchLetterCocktail: document.querySelector('.js-letter-cocktail-2'),
   modal: document.querySelector('.modal'),
-  closeModalBtn: document.querySelector('.modal-close-btn'),
   modalCreateCocktail: document.querySelector('.modal-create-cocktail'),
+  closeModalBtn: document.querySelector('.modal-close-btn'),
+  //модальное ингидиента
+  modalIngredient: document.querySelector('.modal-ingredient'),
+
+  modalCreateIngredient: document.querySelector('.modal-create-ingredient'),
   titleContainer2: document.querySelector('.title-2'),
   svg: document.querySelector('.add-favorite__icon use').href.baseVal,
 };
 
 refs.gallery.addEventListener('click', openModalWindow);
 refs.modal.addEventListener('click', openModalWindow);
+//модальное ингридиента
+refs.modal.addEventListener('click', openModalWindowIngredient);
+refs.modalIngredient.addEventListener('click', openModalWindowIngredient);
 refs.gallery.addEventListener('click', onClickCocktailBtn);
+
+refs.modal.addEventListener('click', onClickIngredientBtn);
+refs.modalIngredient.addEventListener('click', onClickIngredientBtn);
 refs.titleContainer2.style.display = 'none';
+
+// const ingredientModal = document.querySelector('.inredient');
+// ingredientModal.insertAdjacentHTML('beforeend', markup);
 
 window.addEventListener('load', () => {
   fetchRandomCocktails().then(data => {
@@ -66,7 +85,7 @@ refs.gallery.addEventListener('click', saveFavoritCocktailLS);
 function onSearchForm(event) {
   event.preventDefault();
   refs.gallery.innerHTML = '';
-  page = 1;
+  // page = 1;
   const query = event.currentTarget.searchQuery.value.trim();
 
   fetchCocktails(query).then(data => {
@@ -87,13 +106,13 @@ function onClickCocktailBtn(event) {
   // refs.closeModalBtn.style.display = 'block';
   // const reset = '';
   // refs.modal.insertAdjacentHTML('afterbegin', reset);
-  page = 1;
+  // page = 1;
 
-  const ingredient = event.target.getAttribute('data-id');
   const { id } = event.target.dataset;
+  console.log(id);
   fetchIngredientCocktails(id).then(data => {
     createIngredientCocktail(data.drinks);
-
+    console.log(data);
     const btnRemove = document.querySelectorAll('.js_btn_fav_remove');
     for (let btn of btnRemove) {
       btn.style.display = 'none';
@@ -101,9 +120,19 @@ function onClickCocktailBtn(event) {
   });
 }
 
+function onClickIngredientBtn(event) {
+  refs.modalCreateIngredient.innerHTML = '';
+  const { name } = event.target.dataset;
+  console.log(name);
+  fetchNameIngredientCocktail(name).then(data => {
+    console.log(data);
+    createIngredientCard(data.ingredients);
+  });
+}
+
 function onClickLetterCocktail(event) {
   refs.gallery.innerHTML = '';
-  page = 1;
+  // page = 1;
   const letter = event.target.textContent;
 
   console.log(letter);
@@ -120,8 +149,8 @@ function onClickLetterCocktail(event) {
   });
 }
 
-toggleList();
-togglemList();
+// toggleList();
+// togglemList();
 // =====================================================
 
 function saveFavoritCocktailLS(event) {
