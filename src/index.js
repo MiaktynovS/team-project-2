@@ -35,6 +35,8 @@ const refs = {
   modalCreateIngredient: document.querySelector('.modal-create-ingredient'),
   titleContainer2: document.querySelector('.title-2'),
   svg: document.querySelector('.add-favorite__icon use').href.baseVal,
+
+  titleContainer1: document.querySelector('.title-1'),
 };
 
 refs.gallery.addEventListener('click', openModalWindow);
@@ -47,6 +49,9 @@ refs.gallery.addEventListener('click', onClickCocktailBtn);
 refs.modal.addEventListener('click', onClickIngredientBtn);
 refs.modalIngredient.addEventListener('click', onClickIngredientBtn);
 refs.titleContainer2.style.display = 'none';
+
+// toggleList();
+// togglemList();
 
 // const ingredientModal = document.querySelector('.inredient');
 // ingredientModal.insertAdjacentHTML('beforeend', markup);
@@ -126,18 +131,38 @@ function onClickIngredientBtn(event) {
   });
 }
 
+// function onClickLetterCocktail(event) {
+//   refs.gallery.innerHTML = '';
+//   // page = 1;
+//   const letter = event.target.textContent;
+
+//   // console.log(letter);
+
+//   fetchLetterCocktails(letter).then(data => {
+//     // console.log(data.drinks);
+//     // refs.svg.style.display = 'block';
+//     createCocktail(data.drinks);
+
+//     const btnRemove = document.querySelectorAll('.js_btn_fav_remove');
+//     for (let btn of btnRemove) {
+//       btn.style.display = 'none';
+//     }
+//   });
+// }
+
 function onClickLetterCocktail(event) {
   refs.gallery.innerHTML = '';
-  // page = 1;
+  page = 1;
   const letter = event.target.textContent;
 
-  // console.log(letter);
-
   fetchLetterCocktails(letter).then(data => {
-    // console.log(data.drinks);
-    // refs.svg.style.display = 'block';
-    createCocktail(data.drinks);
-
+    if (data.drinks === null) {
+      // console.log(123);
+      refs.titleContainer1.style.display = 'none';
+      refs.gallery.innerHTML = "<div><h2 class='title-error'>Sorry, we didn't find any cocktail for you</h2><img src='./images/error-img.jpg'></div >";
+    } else {
+      createCocktail(data.drinks);
+    }
     const btnRemove = document.querySelectorAll('.js_btn_fav_remove');
     for (let btn of btnRemove) {
       btn.style.display = 'none';
@@ -145,8 +170,6 @@ function onClickLetterCocktail(event) {
   });
 }
 
-// toggleList();
-// togglemList();
 // =====================================================
 
 function saveFavoritCocktailLS(event) {
