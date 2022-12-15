@@ -3,10 +3,7 @@ import { loadFromLS, removeFromLS, saveToLS } from './js/localSt.js';
 
 import { createCocktail } from './js/createCocktail';
 
-import {
-  toggleList,
-  togglemList,
-} from './js/openMenuAndFavorite.js'
+// import { toggleList, togglemList } from './js/openMenuAndFavorite.js';
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -18,6 +15,8 @@ const refs = {
   btnLS: document.querySelector('.add-descr'),
   titleContainer1: document.querySelector('.title-1'),
 };
+
+const cocktails = [];
 
 // =======================LISTENER =========================================================
 refs.searchForm.addEventListener('submit', onSearchForm);
@@ -37,8 +36,10 @@ function loadLSCocktails() {
     arr = arr.map(obj => {
       return obj.drinks[0];
     });
-    console.log(arr);
-    createCocktail(arr);
+    cocktails.push(...arr);
+    //console.log(arr);
+    createCocktail(cocktails);
+
     const btnAdd = document.querySelectorAll('.js_btn_fav_add');
     for (let btn of btnAdd) {
       btn.style.display = 'none';
@@ -47,36 +48,22 @@ function loadLSCocktails() {
 }
 loadLSCocktails();
 
-
-toggleList();
-togglemList();
-
-
 function removeLSFavoritCocktailLS(event) {
-  const arr = loadFromLS('FavoriteCocktails');
   const cocktailNameRemove = event.target.getAttribute(
     'data-cocktail-name-remove'
   );
-  // console.log(cocktailNameRemove);
+  removeFromLS(cocktailNameRemove);
+  const index = cocktails.findIndex(
+    ({ strDrink }) => strDrink === cocktailNameRemove
+  );
+  cocktails.splice(index, 1);
 
-  const fetches = arr.map(cocktailName => {
-    return fetch(`${BASE_URL}s=${cocktailName}`).then(res => res.json());
-  });
-  Promise.all(fetches).then(arr => {
-    console.log(arr);
-    arr = arr.map(obj => {
-      console.log(obj.drinks[0]);
-      return obj.drinks[0];
-    });
-    const newArr = arr.splice(cocktailNameRemove, 1);
-    refs.gallery.innerHTML = '';
-    // console.log(arr);
-    createCocktail(arr);
-    const btnAdd = document.querySelectorAll('.js_btn_fav_add');
-    for (let btn of btnAdd) {
-      btn.style.display = 'none';
-    }
-  });
+  refs.gallery.innerHTML = '';
+  // console.log(arr);
+  createCocktail(cocktails);
+
+  const btnAdd = document.querySelectorAll('.js_btn_fav_add');
+  for (let btn of btnAdd) {
+    btn.style.display = 'none';
+  }
 }
-removeLSFavoritCocktailLS();
-
