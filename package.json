@@ -2,10 +2,10 @@
   "name": "js-coktails",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://github.com/Faleksus/js-coktails",
+  "homepage": "https://github.com/MiaktynovS/team-project-2",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /js-coktails/"
+    "build": "parcel build src/*.html --public-url /team-project-2/"
   },
   "repository": {
     "type": "git",
